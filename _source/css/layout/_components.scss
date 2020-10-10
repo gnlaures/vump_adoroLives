@@ -284,62 +284,56 @@
 
 // hamburguer menu
 .c-hamburguer {
-    @include transforms(translateY(-50%), center);
-    display: none;
-    position: absolute;
-    right: 15px;
-    top: 50%;
     z-index: 4;
     .c-hamburguer__hero {
         @include transforms($property: rotate(0deg));
         @include transition();
         cursor: pointer;
         display: block;
-        height: 26px;
+        height: 14px;
         position: relative;
-        width: 30px;
+        width: 14px;
         .bar {
             @extend .u-showElement;
-            @include roundedAll(1px);
+            @include roundedAll(2px);
             @include transforms($property: rotate(0deg));
             @include transition();
-            background: $mutedGray;
+            background: $primary;
             display: block;
-            height: 2px;
+            height: 4px;
             position: absolute;
             width: 100%;
+            left: 0;
             &.bar_1 {
                 top: 0;
-                left: 0;
+                width: 12px;
             }
             &.bar_2 {
-                top: 12px;
-                left: 0;
+                top: 5px;
+                width: 8px;
             }
             &.bar_3 {
-                top: 24px;
-                left: 0;
+                top: 10px;
+                width: 5px;
             }
         }
     }
     &.is-active {
-        margin-top: -10px;
-        right: 15px;
-        @include roundedAll(20px);
         .c-hamburguer__hero {
-            @include transforms($property: rotate(180deg) scale(0.8));
+            @include transforms($property: rotate(180deg) scale(0.5));
             .bar {
                 background: $white;
                 &.bar_1 {
-                    top: 12px;
                     @include transforms($property: rotate(45deg));
+                    width: 100%;
                 }
                 &.bar_2 {
                     @extend .u-hideElement;
+                    width: 100%;
                 }
                 &.bar_3 {
-                    top: 12px;
                     @include transforms($property: rotate(-45deg));
+                    width: 100%;
                 }
             }
         }
@@ -1179,6 +1173,146 @@ $c_subMenuHover_defaultHeight: 30px;
             overflow: auto;
             padding: 20px;
             max-height: inherit;
+        }
+    }
+}
+
+// project
+.c-search__dropdownSearch {
+    @include roundedAll(17px);
+    border-radius: 17px !important;
+    border: 1px solid $mediumGray;
+    overflow: hidden;
+    top: -32px;
+    background: $white;
+    .select2-search {
+        padding: 0;
+    }
+    .select2-results__option {
+        @include paragrafos($mb: 0, $fw: $fwMedium, $tc: $primary);
+        padding: 10px 20px;
+    }
+    .select2-results__option--selectable,
+    .select2-results__option--highlighted {
+        @include transition();
+        background: $white !important;
+        color: $primary !important;
+        &:hover {
+            background: $primary !important;
+            color: $white !important;
+        }
+    }
+    
+    .select2-search__field {
+        @include roundedAll(17px);
+        @include paragrafos($tc: $primary, $fw: $fwMedium);
+        border: 0 !important;
+        padding: 0 50px 0 20px;
+        height: 33px;
+        line-height: 33px;
+        background: transparent !important;
+    }
+}
+.c-search {
+    display: block;
+    width: 100%;
+    position: relative;
+    height: 33px;
+    &:after {
+        content: '';
+        display: block;
+        width: 15px;
+        height: 15px;
+        background-image: url(#{$media_icons}icon_search.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        position: absolute;
+        right: 18px;
+        top: 9px;
+        z-index: 3;
+    }
+    &__placeholder {
+        @include paragrafos();
+        @include roundedAll(17px);
+        display: block;
+        width: 100%;
+        height: 33px;
+        line-height: 32px;
+        background: $white;
+        border: 1px solid $mediumGray;
+        padding: 0 50px 0 20px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        position: relative;
+    }
+    .select2 {
+        @include transition();
+        @include paragrafos();
+        //@include opacity(0);
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        display: block;
+        width: 100% !important;
+        cursor: text;
+        .select2-selection__rendered {
+            @include paragrafos($mb: 0);
+            display: block;
+            width: 100%;
+            height: 33px;
+            line-height: 33px;
+            padding: 0 50px 0 20px;
+        }
+        .select2-selection {
+            @include roundedAll(17px);
+            border: 1px solid $mediumGray;
+            height: 33px;
+            line-height: 33px;
+            &__arrow {
+                display: none;
+            }
+        }
+    }
+    
+    &:hover {
+        .c-search__select {
+            @include opacity(1);
+        }
+    }
+}
+.c-cardUser {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    &__figure {
+        @include flexWidth(63px);
+        @include roundedAll(50%);
+        display: block;
+        height: 63px;
+        overflow: hidden;
+        a, img {
+            display: block;
+            width: 100%;
+            height: 63px;
+            object-fit: cover;
+        }
+    }
+    &__infos {
+        padding-left: 15px;
+        span {
+            @include paragrafos($tc: $white, $fs: 16px, $mb: 2px);
+            display: block;
+            width: 100%;
+        }
+        span.username {
+            font-weight: $fwMedium;
+        }
+        span.editAcc {
+            font-size: 12px;
         }
     }
 }

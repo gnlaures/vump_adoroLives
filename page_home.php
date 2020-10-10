@@ -1,9 +1,9 @@
-<header class="l-headerHome">
-	<img src="https://via.placeholder.com/1440x590" alt="" class="l-headerHome__banner">
+<header class="l-headerHome u-dnone">
+	<img src="media/img/content/home_header.jpg" alt="" class="l-headerHome__banner">
 	<div class="u-container">
 		<div class="l-headerHome__content">
 			<div class="l-headerHome__companyBrand">
-				<a href="#"><img src="https://via.placeholder.com/135x20" alt="Americanas.com"></a>
+				<a href="#"><img src="media/img/content/brand_americanas.png" alt="Americanas.com"></a>
 			</div>
 			<div class="l-headerHome__presentation">Apresenta</div>
 			<h1 class="l-headerHome__title"><strong>Melim</strong> ao vivo</h1>
@@ -16,7 +16,7 @@
 	</div>
 </header>
 
-<main id="page__home">
+<main id="page__home" class="u-dnone">
 	<section class="s-galleryLives">
 		<div class="u-containerBig">
 			<div class="s-galleryLives__header">
@@ -48,7 +48,7 @@
 							<div class="c-cardLive --online --favorited">
 								<figure class="c-cardLive__figure">
 									<a href="#" class="u-aspectRatio u-aspectRatio--16-9" title="Título da Live">
-										<img src="https://via.placeholder.com/1920x1080" alt="Título da Live">
+										<img src="media/img/content/live_1.jpg" alt="Título da Live">
 										<span>ao vivo <strong>agora</strong></span>
 									</a>
 									<a href="#" class="c-cardLive__favorite" title="Adicionar aos favoritos">S2</a>

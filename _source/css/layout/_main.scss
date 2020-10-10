@@ -1,25 +1,6 @@
 // .
-.u-maxRow {
-	display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
-	min-height: 100vh;
-	padding-top: 94px;
-	max-width: 100%;
-	main {
-		flex: 1 1 auto;
-		max-width: 100%;
-		background: $white3;
-		padding: 60px 0;
-	}
-	header {
-		flex: 0 1 auto;
-		max-width: 100%;
-	}
-	footer {
-		flex: 0 1 auto;
-		max-width: 100%;
-	}
+body {
+	background: $mutedGray;
 }
 
 // l-
@@ -29,67 +10,150 @@
 	width: 100%;
 	max-width: $maxRowWidth;
 	margin: 0 auto;
-	padding: 20px 0;
+	padding: 30px 0;
 	position: fixed;
 	top: 0;
 	left: 0;
 	right: 0;
-	background: $primaryDark;
+	background: rgba(255,255,255,0.8);
 	z-index: 10;
-	.u-containerFlex {
-		flex-wrap: wrap;
+	
+	// hide elements
+	&__mobileUserControl,
+	&__menuMobile,
+	&__hamburguer,
+	&__accDetails {
+		display: none;
 	}
 	
+	// visible elements
 	&__brand {
-		@include flexWidth(200px);
+		@include flexWidth(135px);
 		display: block;
 		a, img {
 			display: block;
 			width: 100%;
 		}
 	}
+	&__search {
+		@include flexWidth(460px);
+		padding: 0 50px;
+	}
 	&__contentHero {
 		@include scroll();
 		flex: 1 1 auto;
 		display: flex;
 		flex-direction: row;
-		flex-wrap: wrap;
-		justify-content: flex-end;
+		flex-wrap: nowrap;
+		justify-content: space-between;
 		align-items: center;
 		position: relative;
 		z-index: 3;
 	}
+	&__smallWarn {
+		display: block;
+		flex: 0 1 auto;
+		max-width: 340px;
+		padding-right: 30px;
+		i {
+			@include flexWidth(18px);
+			height: 18px;
+			* {
+				display: block;
+				width: 100%;
+				height: 18px;
+			}
+		}
+		div {
+			@include paragrafos();
+			padding-left: 10px;
+			display: block;
+			flex: 1 1 auto;
+		}
+	}
 	&__menu {
+		flex: 1 1 auto;
 		display: flex;
 		flex-direction: row;
-		flex-wrap: wrap;
+		flex-wrap: nowrap;
+		justify-content: flex-end;
 		position: relative;
 		z-index: 2;
 		> li {
 			display: block;
 			position: relative;
+			margin-right: 46px;
+			width: min-content;
+			min-height: 31px;
+			&:after {
+				@include spacer();
+			}
+			&:last-of-type {
+				margin-right: 0;
+				&:after {
+					display: none;
+				}
+			}
 			a {
-				color: $white;
-				cursor: pointer;
-				padding: 0 15px;
+				@include transition;
+				@include paragrafos();
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				align-content: center;
+				justify-content: flex-start;
+				flex-wrap: wrap;
+				white-space: nowrap;
+				height: 100%;
+				span, strong {
+					@include flexWidth(100%);
+					@include transition();
+					display: block;
+					width: 100%;
+					white-space: nowrap;
+				}
+				&.iconLink {
+					@include transition();
+					@include roundedAll(10px);
+					height: 31px;
+					width: 31px;
+					display: flex;
+					flex-direction: row;
+					align-items: center;
+					justify-content: center;
+					img, svg {
+						@include transition();
+						display: block;
+						width: 20px;
+						height: 20px;
+						object-fit: contain;
+					}
+					&:hover {
+						background: $white3;
+						svg {
+							path {
+								fill: $primary;
+							}
+						}
+					}
+					&.--acc {
+						img, svg {
+							width: 20px;
+							height: 21px;
+						}
+					}
+				}
 				&:hover {
 					color: $secondary;
+					span, strong {
+						color: $secondary !important;
+					}
 				}
 			}
 		}
 	}
-	&__social {
-		display: block;
-		padding-left: 15px;
-	}
-	&__cta {
-		padding-left: 30px;
-	}
 	
-	&__showOnlyInResponsive {
-		display: none;
-	}
-	
+	// utilites / states
 	&__maskMenu {
 		&.maskAll,
 		&.maskMenu {
@@ -112,19 +176,34 @@
 			z-index: 1;
 		}
 	}
-	
 	&.hidden {
 		top: -300px;
 	}
 	&.scrolled {
-		padding: 5px 0;
+		padding: 15px 0;
 		.c-hamburguer {
 			&.is-active {
 				margin-top: 5px;
 			}
 		}
 	}
+	&.--userOn {
+		.--userOff {
+			display: none !important;
+		}
+	}
+	&.--userOff {
+		.--userOn {
+			display: none !important;
+		}
+	}
 }
+
+
+
+
+
+
 .l-footer {
 	background: $primaryDark;
 	padding: 30px 0;

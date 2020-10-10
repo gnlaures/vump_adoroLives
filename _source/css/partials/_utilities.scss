@@ -40,20 +40,20 @@
 // flex containers / grids
 .u-flexContainer, .u-containerFlex {
     display: flex;
-    &.u-wrap {flex-wrap: wrap;}
-    &.u-nowrap {flex-wrap: nowrap;}
-	&.u-wrapRev {flex-wrap: wrap-reverse;}
-	&.u-jcfe {justify-content: flex-end;}
-	&.u-jcfs {justify-content: flex-start;}
-	&.u-jcsb {justify-content: space-between;}
-	&.u-jcsa {justify-content: space-around;}
-	&.u-jcc {justify-content: center;}
-	&.u-aic {align-items: center;}
-	&.u-aifs {align-items: flex-start;}
-	&.u-aife {align-items: flex-end;}
-	&.u-fdr {flex-direction: row;}
-	&.u-fdc {flex-direction: column;}
 }
+.u-wrap {flex-wrap: wrap;}
+.u-nowrap {flex-wrap: nowrap;}
+.u-wrapRev {flex-wrap: wrap-reverse;}
+.u-jcfe {justify-content: flex-end;}
+.u-jcfs {justify-content: flex-start;}
+.u-jcsb {justify-content: space-between;}
+.u-jcsa {justify-content: space-around;}
+.u-jcc {justify-content: center;}
+.u-aic {align-items: center;}
+.u-aifs {align-items: flex-start;}
+.u-aife {align-items: flex-end;}
+.u-fdr {flex-direction: row;}
+.u-fdc {flex-direction: column;}
 
 // default widths - used majority in float blocks
 .u-fw100 {@include flexWidth(100%)}
@@ -134,22 +134,22 @@
 }
 
 // generic class
-.u-color--primaryLight {color: $primaryLight;}
-.u-color--primary {color: $primary;}
-.u-color--primaryDark {color: $primaryDark;}
-.u-color--secondaryLight {color: $secondaryLight;}
-.u-color--secondary {color: $secondary;}
-.u-color--primaryDark {color: $secondaryDark;}
-.u-color--mutedGray {color: $mutedGray;}
-.u-color--lightGray {color: $lightGray;}
-.u-color--mediumGray {color: $mediumGray;}
-.u-color--darkGray {color: $darkGray;}
-.u-color--baseGray {color: $baseGray;}
-.u-color--transparent {color: transparent;}
-.u-color--white {color: $white;}
-.u-color--white2 {color: $white2;}
-.u-color--white3 {color: $white3;}
-.u-color--textDefault {color: $text;}
+.u-color--primaryLight {color: $primaryLight !important;}
+.u-color--primary {color: $primary !important;}
+.u-color--primaryDark {color: $primaryDark !important;}
+.u-color--secondaryLight {color: $secondaryLight !important;}
+.u-color--secondary {color: $secondary !important;}
+.u-color--primaryDark {color: $secondaryDark !important;}
+.u-color--mutedGray {color: $mutedGray !important;}
+.u-color--lightGray {color: $lightGray !important;}
+.u-color--mediumGray {color: $mediumGray !important;}
+.u-color--darkGray {color: $darkGray !important;}
+.u-color--baseGray {color: $baseGray !important;}
+.u-color--transparent {color: transparent !important;}
+.u-color--white {color: $white !important;}
+.u-color--white2 {color: $white2 !important;}
+.u-color--white3 {color: $white3 !important;}
+.u-color--textDefault {color: $text !important;}
 
 .u-bg--primaryLight {background: $primaryLight;}
 .u-bg--primary {background: $primary;}

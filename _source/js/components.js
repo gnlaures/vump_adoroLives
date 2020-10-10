@@ -30,6 +30,42 @@ if (is.not.ie()) {
         }
     }).trigger('focusout');
 }
+if ($('.c-search').length) {
+    $('.c-search__select').select2({
+        minimumInputLength: 3,
+        dropdownCssClass: 'c-search__dropdownSearch',
+        placeholder: "",
+        language: {
+            inputTooShort: function () {
+                return "Digite pelo menos 3 caracteres";
+            },
+            inputTooLong: function () {
+                return "Limite de caracteres máximo atingido";
+            },
+            errorLoading: function () {
+                return "Erro ao carregar resultados";
+            },
+            loadingMore: function () {
+                return "Carrengando mais resultados";
+            },
+            maximumSelected: function () {
+                return "Número máximo de selecionados atingido";
+            },
+            noResults: function () {
+                return "Sem resultados";
+            },
+            removeAllItems: function () {
+                return "Desmarcar itens";
+            }
+        },
+    });
+    $(window).on('load', function() {
+        $('.select2-selection__placeholder').html('<strong class="u-color--primary">encontre</strong> <span class="u-color--textDefault">um show, um evento ou o que vc quiser</span>');
+    });
+    $('.c-search__select .select2-search__field').on('focusout', function() {
+        $('.c-search__select').select2('close');
+    })
+}
 
 // grids / tabs
 if ($('.c-responsiveGrid').length) {
