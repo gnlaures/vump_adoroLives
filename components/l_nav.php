@@ -1,4 +1,4 @@
-<nav class="l-nav --userOn">
+<nav class="l-nav --userOff">
 	<div class="u-containerBig u-dflex u-aic u-nowrap">
 		<div class="l-nav__hamburguer">
 			<div class="c-hamburguer">
@@ -56,7 +56,7 @@
 			</div>
 			<div class="l-nav__smallWarn --userOff">
 				<a href="#" class="u-dflex u-fdr u-aic">
-					<i><?php include('media/img/icons/icon_search.svg'); ?></i>
+					<i><?php include('media/img/icons/icon_warn.svg'); ?></i>
 					<div>Conheça a nova categoria <strong class="u-color--primary">independente</strong>, feito por gente como a gente e que manda muito bem.</div>
 				</a>
 			</div>

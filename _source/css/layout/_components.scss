@@ -341,30 +341,29 @@
 }
 
 // buttons / links / sub menu
-$c_btn_heightDefault: 50px;
-$c_btn_heightSmall: 38px;
+$c_btn_heightDefault: 40px;
+$c_btn_heightSmall: 36px;
 $c_btn_maxWidth: 220px;
-$c_btnIcon_heightDefault: 50px;
-$c_btnIcon_heightSmall: 38px;
+$c_btnIcon_heightDefault: 40px;
+$c_btnIcon_heightSmall: 36px;
 $c_btnIcon_maxWidth: 220px;
 .c-btn {
     @include transition();
-    @include roundedAll();
+    @include roundedAll(20px);
     position: relative;
     overflow: hidden;
-    display: block;
+    display: inline-block;
     min-width: 130px;
     max-width: $c_btn_maxWidth;
-    width: 100%;
     cursor: pointer;
     background: $primary;
     height: $c_btn_heightDefault;
     line-height: $c_btn_heightDefault;
     text-align: center;
-    text-transform: uppercase;
-    font-size: 16px;
-    font-weight: $fwRegular;
+    font-size: 13px;
+    font-weight: $fwLight;
     color: $white;
+    padding: 0 30px;
     white-space: nowrap;
     // default btns
     &.--primary {
@@ -785,27 +784,35 @@ $c_btnIcon_maxWidth: 220px;
     }
 }
 
-$c_subMenuHover_defaultHeight: 30px;
+$c_subMenuHover_defaultHeight: 28px;
 .c-subMenuHover {
     position: relative;
     width: 100%;
     > a {
+        @include transition();
+        @include roundedAll(12px);
         display: block;
-        padding: 0 15px;
+        padding: 0 40px 0 20px;
         height: $c_subMenuHover_defaultHeight;
         line-height: $c_subMenuHover_defaultHeight;
-        border: 1px solid red;
+        background: $primary;
         position: relative;
+        color: $white;
+        font-size: 13px;
+        font-weight: $fwLight;
         &:after {
-            content: '+';
+            content: '';
             display: block;
             position: absolute;
             top: 0;
-            right: 0;
-            width: 10px;
+            right: 20px;
+            width: 12px;
             height: $c_subMenuHover_defaultHeight;
             line-height: $c_subMenuHover_defaultHeight;
-            background: orange;
+            background-image: url(#{$media_assets}caret-white.svg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
         }
         &.is-blocked-mobile {
             pointer-events: none;
@@ -814,11 +821,30 @@ $c_subMenuHover_defaultHeight: 30px;
     
     &__sub {
         @include transition();
+        @include roundedAll(14px);
         @include u-hideElement;
         display: block;
         width: 100%;
         position: absolute;
-        background: $mutedGray;
+        background: $white;
+        padding: 10px 0;
+        li {
+            display: block;
+            width: 100%;
+        }
+        a {
+            @include transition();
+            display: block;
+            width: 100%;
+            color: $text;
+            padding: 5px 20px;
+            font-size: 13px;
+            font-weight: $fwLight;
+            &:hover {
+                background: $mutedGray;
+                color: $primary;
+            }
+        }
     }
     
     &.--thisOpenInBottom {
@@ -1313,6 +1339,271 @@ $c_subMenuHover_defaultHeight: 30px;
         }
         span.editAcc {
             font-size: 12px;
+        }
+    }
+}
+.c-defaultBtns {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    .c-btn {
+        margin-right: 10px;
+    }
+}
+.c-linkShare {
+    @include roundedAll(50%);
+    @include transition();
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid $mediumGray;
+    background: $mutedGray;
+    svg, img {
+        @include transition();
+        width: 20px;
+        height: 20px;
+        display: block;
+        * {
+            @include transition();
+        }
+    }
+    &:hover {
+        background: $primary;
+        border-color: $primaryDark;
+        svg {
+            path {
+                fill: $white;
+            }
+        }
+    }
+}
+.c-cardLive {
+    width: 100%;
+    max-width: 300px; //test
+    position: relative;
+    &__figure {
+        display: block;
+    }
+    &__cover {
+        @include roundedAll(20px);
+        display: block;
+        position: relative;
+        img {
+            @include roundedAll(20px);
+            display: block;
+            width: 100%;
+            height: 160px;
+            object-position: center;
+            object-fit: cover;
+        }
+        span {
+            @include roundedAll(10px);
+            display: none;
+            height: 15px;
+            width: 90px;
+            white-space: nowrap;
+            padding: 0 10px;
+            background: $primary;
+            color: $white;
+            text-align: center;
+            font-weight: $fwLight;
+            font-size: 11px;
+            position: absolute;
+            right: 20px;
+            bottom: -5px;
+            strong {
+                font-weight: $fwBold;
+            }
+        }
+    }
+    &__favorite {
+        @include rounded(top, right, 20px);
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: block;
+        width: 65px;
+        height: 65px;
+        overflow: hidden;
+        &:before {
+            content: '';
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 65px 65px 0;
+            border-color: transparent $primary transparent transparent;
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 1;
+        }
+        svg {
+            display: block;
+            width: 16px;
+            height: 13px;
+            position: relative;
+            top: 14px;
+            left: 36px;
+            z-index: 2;
+            path {
+                fill: $white;
+            }
+        }
+    }
+    &__content {
+        margin-top: 10px;
+        display: block;
+    }
+    &__title {
+        font-weight: $fwLight;
+        font-size: 20px;
+        line-height: 23px;
+        color: $secondaryLight;
+    }
+    &__descriptions {
+        font-weight: $fwLight;
+        font-size: 13px;
+        line-height: 15px;
+        color: $secondaryLight;
+        margin: 5px 0 5px 0;
+    }
+    &__listTags {
+        display: block;
+        li {
+            display: inline-block;
+            a {
+                font-weight: $fwLight;
+                font-size: 11px;
+                line-height: 13px;
+                color: $text;
+                position: relative;
+                &:hover {
+                    color: $secondary;
+                }
+                &:after {
+                    content: ',';
+                    display: block;
+                    font-weight: $fwLight;
+                    font-size: 11px;
+                    line-height: 13px;
+                    color: $text;
+                    position: absolute;
+                    top: 0;
+                    right: -2px;
+                }
+            }
+            &:last-of-type {
+                a {
+                    &:after {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+    &__companyBrand {
+        display: block;
+        margin: 10px 0 15px 0;
+        a {
+            display: block;
+            max-width: 150px;
+            img {
+                display: block;
+                width: 100%;
+                height: 12px;
+                object-fit: contain;
+                object-position: center left;
+            }
+        }
+    }
+    &__comments {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        margin-bottom: 15px;
+        .comments__stars {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            position: relative;
+            top: -1px;
+            li {
+                margin-right: 2px;
+                &:last-of-type {
+                    margin-right: 0;
+                }
+            }
+            a, svg, img {
+                display: block;
+                width: 9px;
+                height: 9px;
+                object-fit: contain;
+            }
+        }
+        .comments__num {
+            padding-left: 5px;
+            font-weight: $fwLight;
+            font-size: 11px;
+            line-height: 13px;
+            color: $secondaryLight;
+        }
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    &__btns {
+    
+    }
+    
+    &.--online {
+        .c-cardLive__cover {
+            span {
+                display: block;
+            }
+        }
+    }
+    &.--favorited {
+        .c-cardLive__favorite {
+            &:before {
+                border-color: transparent $black transparent transparent;
+            }
+        }
+    }
+}
+.c-toggle {
+    ul {
+        @include roundedAll(14px);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        background: $white;
+    }
+    li {
+        display: block;
+        flex: 0 1 auto;
+    }
+    a {
+        @include roundedAll(14px);
+        @include transition();
+        display: block;
+        height: 28px;
+        line-height: 28px;
+        color: $black;
+        font-size: 13px;
+        font-weight: $fwLight;
+        padding: 0 15px;
+        &.is-active {
+            background: $primary;
+            color: $white;
+            padding: 0 20px;
         }
     }
 }

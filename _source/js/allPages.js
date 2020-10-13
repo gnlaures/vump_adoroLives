@@ -148,7 +148,34 @@ if ($('.l-nav').length) {
 }
 
 // s
-// if ($('.s-sectionX').length) {}
+if ($('.s-galleryLives').length) {
+    // toggle menu
+    $('.header__select .c-subMenuHover > a').on('click', function (e) {
+        e.preventDefault();
+    });
+    $('.header__select .c-subMenuHover__sub a').on('click', function (e) {
+        e.preventDefault();
+        var thisCategory = $(this).text();
+        $('.header__select .c-subMenuHover > a').html(thisCategory);
+    });
+
+    // swiper
+    var returnTouchMove
+    if (is.desktop()) {
+        returnTouchMove = false;
+    } else {
+        returnTouchMove = true;
+    }
+    var swiper__galleryLives = new Swiper('.swiper__galleryLives', {
+        speed: 400,
+        slidesPerView: 5,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        allowTouchMove: returnTouchMove,
+    });
+}
 
 // #page
 if ($('#page_contato').length) {

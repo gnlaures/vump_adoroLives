@@ -136,6 +136,13 @@ if ($('.c-toggleList').length) {
         $(this).parent().toggleClass('is-active');
     });
 }
+if ($('.c-toggle').length) {
+    $('.c-toggle a').on('click', function (e) {
+        e.preventDefault();
+        $(this).closest('.c-toggle').find('a').removeClass('is-active');
+        $(this).addClass('is-active');
+    })
+}
 
 // links
 if ($('.c-subMenu').length) {
