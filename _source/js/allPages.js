@@ -177,56 +177,57 @@ if ($('.s-galleryLives').length) {
     });
 }
 
-// #page
-if ($('#page_contato').length) {
-    $("#formContato").validate({
-        submitHandler: function (form) {
-            //SUBMIT form
-            $(form).ajaxSubmit({
-                //target: 'status-envio',
-                beforeSubmit: function () {
-                    $('#formContato .c-stsSend').removeClass('u-dnone');
-                    $('#formContato .c-stsSend__feedback--load').removeClass('u-dnone');
-                    $('#formContato  #btnContato').attr('disabled', true);
-                },
-                success: function (result) {
-                    result = result.split('|');
-                    if(parseInt(result[1]) == 1){
-                        $('#formContato .c-stsSend__feedback').addClass('u-dnone');
-                        $('#formContato .c-stsSend__feedback--success').removeClass('u-dnone');
-                        setTimeout(function(){
-                            $('#formContato #btnContato').attr('disabled',false);
-                            $("#formContato .field").val('');
-                            $("#formContato textarea").val('').html('');
-                            $("#formContato .field").removeClass('error');
-                            $('#formContato .c-stsSend').addClass('u-dnone');
-                            $('#formContato .c-stsSend__feedback').addClass('u-dnone');
-                        },2000);
-                    }else{
-                        $('#formContato .c-stsSend__feedback').addClass('u-dnone');
-                        $('#formContato .c-stsSend__feedback--error').removeClass('u-dnone');
-                        $('#formContato .c-stsSend__feedback--error span').html(result[2]);
-                        setTimeout(function () {
-                            $('#formContato .c-stsSend').addClass('u-dnone');
-                            $('#formContato .c-stsSend__feedback').addClass('u-dnone');
-                            $('#formContato #btnContato').attr('disabled', false);
-                        }, 3000);
-                    }
-                }
-            });
-        }
+// m
+if ($('.m-defaultModal').length) {
+    // close modal
+    $('.m-defaultModal__close, .m-defaultModal__maskClose').on('click', function() {
+        $('.m-defaultModal').removeClass('is-active');
+        $('.m-defaultModal__maskClose').removeClass('is-active');
+        window.location.hash = '#_';
     });
-    $(document).on('change','#formContato_estado',function(){
-        var uf = $(this).val();
-        $("#formContato_cidade").html('<option>Carregando cidades...</option>');
-        $.ajax({
-            type: "POST",
-            data: {uf: uf},
-            url: "ajax-cidades.php",
-            success: function (result) {
-                $("#formContato_cidade").html(result);
-            }
-        });
+
+    // open modal on click
+    $('.js-openModal').on('click', function(e) {
+        e.preventDefault();
+        // show mask
+        $('.m-defaultModal__maskClose').addClass('is-active');
+
+        // get content
+        var thisHref = $(this).attr('href');
+        $(thisHref).addClass('is-active');
+
+        // set hash
+        window.location.hash = thisHref;
+    });
+
+    // open modal on hash
+    $(window).on('load hashchange', function() {
+       var hash = get__hash();
+       console.log(hash);
+
+       if ($(hash).hasClass('m-defaultModal')) {
+           $('.m-defaultModal__maskClose').addClass('is-active');
+           $(hash).addClass('is-active');
+       } else {
+           $('.m-defaultModal__maskClose').removeClass('is-active');
+           $('.m-defaultModal').removeClass('is-active');
+       }
+    });
+
+    // remove u-dnone on load
+    $(window).on('load', function() {
+        $('.m-defaultModal').removeClass('u-dnone');
+    });
+}
+if ($('.m-userRegister').length) {
+    $(document).on('click', '.js-menuCategories .c-subMenu__content .liCheckbox > div', function() {
+        var thisAttr = $(this).attr('data-id-category');
+        $(".js-menuSubCategories .c-subMenu__content .liCheckbox > div[data-id-category="+thisAttr+"]").removeClass('u-dnone');
+    });
+    $(document).on('click', '.js-menuCategories .c-multiSelect__selecteds .liCheckbox input', function() {
+        var thisAttr = $(this).parent().attr('data-id-category');
+        $(".js-menuSubCategories .c-subMenu__content .liCheckbox > div[data-id-category="+thisAttr+"]").addClass('u-dnone');
+        $(".js-menuSubCategories .c-multiSelect__selecteds .liCheckbox > div[data-id-category="+thisAttr+"]").closest('li').remove();
     });
 }
 

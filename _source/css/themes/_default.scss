@@ -40,7 +40,7 @@ $media_content : "../../media/img/content/";
 
 // text
 $text: #A3A3A3;
-$placeholderText: lighten($text, 15%);
+$placeholderText: lighten($secondaryLight, 15%);
 $fontFamily__default: 'Roboto', 'Arial', 'Calibri', sans-serif;
 $fwThin: 100;
 $fwLight: 300;

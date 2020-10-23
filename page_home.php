@@ -10,7 +10,7 @@
 			<div class="l-headerHome__date">Dia 23/06 - 15:30</div>
 			<div class="l-headerHome__btns c-defaultBtns">
 				<a href="#" class="c-btn --primary --savedLived">Grave na sua agenda</a>
-				<a href="#" class="c-linkShare">
+				<a href="#compartilhar-live" class="c-linkShare js-openModalSWAL">
 					<?php include('media/img/icons/icon_share.svg'); ?>
 				</a>
 			</div>
@@ -79,7 +79,9 @@
 									</a>
 									<div class="c-cardLive__btns c-defaultBtns">
 										<a href="#" class="c-btn --primary --savedLived">Grave na sua agenda</a>
-										<a href="#" class="c-linkShare"><?php include('media/img/icons/icon_share.svg'); ?></a>
+										<a href="#compartilhar-live" class="c-linkShare js-openModalSWAL">
+											<?php include('media/img/icons/icon_share.svg'); ?>
+										</a>
 									</div>
 								</div>
 							</div>
@@ -118,7 +120,9 @@
 									</a>
 									<div class="c-cardLive__btns c-defaultBtns">
 										<a href="#" class="c-btn --primary --savedLived">Grave na sua agenda</a>
-										<a href="#" class="c-linkShare"><?php include('media/img/icons/icon_share.svg'); ?></a>
+										<a href="#compartilhar-live" class="c-linkShare js-openModalSWAL">
+											<?php include('media/img/icons/icon_share.svg'); ?>
+										</a>
 									</div>
 								</div>
 							</div>
@@ -157,7 +161,9 @@
 									</a>
 									<div class="c-cardLive__btns c-defaultBtns">
 										<a href="#" class="c-btn --primary --savedLived">Grave na sua agenda</a>
-										<a href="#" class="c-linkShare"><?php include('media/img/icons/icon_share.svg'); ?></a>
+										<a href="#compartilhar-live" class="c-linkShare js-openModalSWAL">
+											<?php include('media/img/icons/icon_share.svg'); ?>
+										</a>
 									</div>
 								</div>
 							</div>
@@ -196,7 +202,9 @@
 									</a>
 									<div class="c-cardLive__btns c-defaultBtns">
 										<a href="#" class="c-btn --primary --savedLived">Grave na sua agenda</a>
-										<a href="#" class="c-linkShare"><?php include('media/img/icons/icon_share.svg'); ?></a>
+										<a href="#compartilhar-live" class="c-linkShare js-openModalSWAL">
+											<?php include('media/img/icons/icon_share.svg'); ?>
+										</a>
 									</div>
 								</div>
 							</div>
@@ -235,7 +243,9 @@
 									</a>
 									<div class="c-cardLive__btns c-defaultBtns">
 										<a href="#" class="c-btn --primary --savedLived">Grave na sua agenda</a>
-										<a href="#" class="c-linkShare"><?php include('media/img/icons/icon_share.svg'); ?></a>
+										<a href="#compartilhar-live" class="c-linkShare js-openModalSWAL">
+											<?php include('media/img/icons/icon_share.svg'); ?>
+										</a>
 									</div>
 								</div>
 							</div>
@@ -294,7 +304,9 @@
 									</a>
 									<div class="c-cardLive__btns c-defaultBtns">
 										<a href="#" class="c-btn --primary --savedLived">Grave na sua agenda</a>
-										<a href="#" class="c-linkShare"><?php include('media/img/icons/icon_share.svg'); ?></a>
+										<a href="#compartilhar-live" class="c-linkShare js-openModalSWAL">
+											<?php include('media/img/icons/icon_share.svg'); ?>
+										</a>
 									</div>
 								</div>
 							</div>
@@ -333,7 +345,9 @@
 									</a>
 									<div class="c-cardLive__btns c-defaultBtns">
 										<a href="#" class="c-btn --primary --savedLived">Grave na sua agenda</a>
-										<a href="#" class="c-linkShare"><?php include('media/img/icons/icon_share.svg'); ?></a>
+										<a href="#compartilhar-live" class="c-linkShare js-openModalSWAL">
+											<?php include('media/img/icons/icon_share.svg'); ?>
+										</a>
 									</div>
 								</div>
 							</div>
@@ -372,7 +386,9 @@
 									</a>
 									<div class="c-cardLive__btns c-defaultBtns">
 										<a href="#" class="c-btn --primary --savedLived">Grave na sua agenda</a>
-										<a href="#" class="c-linkShare"><?php include('media/img/icons/icon_share.svg'); ?></a>
+										<a href="#compartilhar-live" class="c-linkShare js-openModalSWAL">
+											<?php include('media/img/icons/icon_share.svg'); ?>
+										</a>
 									</div>
 								</div>
 							</div>
@@ -411,7 +427,9 @@
 									</a>
 									<div class="c-cardLive__btns c-defaultBtns">
 										<a href="#" class="c-btn --primary --savedLived">Grave na sua agenda</a>
-										<a href="#" class="c-linkShare"><?php include('media/img/icons/icon_share.svg'); ?></a>
+										<a href="#compartilhar-live" class="c-linkShare js-openModalSWAL">
+											<?php include('media/img/icons/icon_share.svg'); ?>
+										</a>
 									</div>
 								</div>
 							</div>
@@ -450,7 +468,9 @@
 									</a>
 									<div class="c-cardLive__btns c-defaultBtns">
 										<a href="#" class="c-btn --primary --savedLived">Grave na sua agenda</a>
-										<a href="#" class="c-linkShare"><?php include('media/img/icons/icon_share.svg'); ?></a>
+										<a href="#compartilhar-live" class="c-linkShare js-openModalSWAL">
+											<?php include('media/img/icons/icon_share.svg'); ?>
+										</a>
 									</div>
 								</div>
 							</div>
@@ -477,7 +497,8 @@
 							<input id="formCadastroLive_titulo" type="text" class="field" placeholder="Título" required>
 						</li>
 						<li class="u-fw50">
-							<input id="formCadastroLive_descricao" type="text" class="field" placeholder="Descrição" required>
+							<input id="formCadastroLive_descricao" type="text" class="field" placeholder="Descrição"
+									required>
 						</li>
 						<li class="u-fw100 c-multiSelect">
 							<div class="c-multiSelect__ipt">
@@ -503,17 +524,21 @@
 							</ul>
 						</li>
 						<li class="u-fw25">
-							<input id="formCadastroLive_data" type="text" class="field" placeholder="Data da live" required>
+							<input id="formCadastroLive_data" type="text" class="field" placeholder="Data da live"
+									required>
 						</li>
 						<li class="u-fw25">
-							<input id="formCadastroLive_hora" type="text" class="field" placeholder="Hora da live" required>
+							<input id="formCadastroLive_hora" type="text" class="field" placeholder="Hora da live"
+									required>
 						</li>
 						<li class="u-fw100">
-							<input id="formCadastroLive_link" type="text" class="field" placeholder="Link da Live" required>
+							<input id="formCadastroLive_link" type="text" class="field" placeholder="Link da Live"
+									required>
 						</li>
 						<li class="u-fw100 liFile">
 							<input id="formCadastroLive_file" class="inputAttach" name="#" type="file" required>
-							<input id="formCadastroLive_fileName" class="inputText" type="text" placeholder="Carregar Capa">
+							<input id="formCadastroLive_fileName" class="inputText" type="text"
+									placeholder="Carregar Capa">
 							<label for="#">Máx de 1mb em jpg, png ou svg</label>
 						</li>
 						<li class="u-fw100">
@@ -533,7 +558,8 @@
 		<div class="u-container">
 			<i><?php include('media/img/icons/icon_video.svg'); ?></i>
 			<h1>Sua live foi salva certinha, parabéns!</h1>
-			<p>Nossa equipe vai conferir pra ver se está tudo ok do nosso lado e lhe avisaremos rapidinho, mas rapidinho mesmo.</p>
+			<p>Nossa equipe vai conferir pra ver se está tudo ok do nosso lado e lhe avisaremos rapidinho, mas rapidinho
+				mesmo.</p>
 			<a href="#" class="c-btn --primary">Cadastrar outra live</a>
 		</div>
 	</section>

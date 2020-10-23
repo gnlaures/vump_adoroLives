@@ -14,22 +14,6 @@ if ($('.liFile').length) {
         $(this).closest('.liFile').find('.inputText').val(t[1]);
     });
 }
-if (is.not.ie()) {
-    $('.cepMask').mask("99999-999");
-    $('.cpfMask').mask("999.999.999-99");
-    $('.dataMask').mask("99/99/9999");
-    $('.foneMask').focusout(function () {
-        var phone, element;
-        element = $(this);
-        element.unmask();
-        phone = element.val().replace(/\D/g, '');
-        if (phone.length > 10) {
-            element.mask("(99) 99999-999?9");
-        } else {
-            element.mask("(99) 9999-9999?9");
-        }
-    }).trigger('focusout');
-}
 if ($('.c-search').length) {
     $('.c-search__select').select2({
         minimumInputLength: 3,
@@ -65,6 +49,24 @@ if ($('.c-search').length) {
     $('.c-search__select .select2-search__field').on('focusout', function() {
         $('.c-search__select').select2('close');
     })
+}
+if ($('.c-copyLinkLive').length) {
+    $('.c-copyLinkLive span').on('click', function (e) {
+        e.preventDefault();
+        var input = $(this).closest('.c-copyLinkLive').children('input');
+        input.focus().select();
+        $('.c-copyLinkLive__feedback').addClass('u-dnone');
+        try {
+            var successful = document.execCommand('copy');
+            $('.c-copyLinkLive__feedback.--success').removeClass('u-dnone');
+        } catch (err) {
+            $('.c-copyLinkLive__feedback.--fail').removeClass('u-dnone');
+        }
+        setTimeout(function(){
+            $('.c-copyLinkLive__feedback').addClass('u-dnone');
+        }, 5000);
+    });
+
 }
 
 // grids / tabs
@@ -205,4 +207,65 @@ if ($('.c-subMenuHover').length) {
     }
     $(window).on('load', function(){mobileAdjusts()});
     $(window).on('resize', function(){mobileAdjusts()});
+}
+
+// cards
+if ($('.c-cardLive').length) {
+    $('.c-cardLive__favorite').on('click', function(e) {
+        e.preventDefault();
+       $(this).closest('.c-cardLive').toggleClass('--favorited');
+    });
+}
+
+// multiSelect
+// pegar categoria clicada e mover para dentro da lista de selecteds
+// ao clicar no input dentro de do "selected" mover de volta para dentro do componente
+// validar quantidade de categorias (máx de 3)
+if ($('.c-multiSelect').length) {
+
+    // create selected list
+    $(document).on('click', '.c-multiSelect__options .liCheckbox div > *', function(e) {
+        //e.stopPropagation();
+        e.preventDefault();
+
+        // get number of selected categories
+        var qtdSelectedElements = $(this).closest('.c-multiSelect').find('.c-multiSelect__selecteds').children('li').length;
+        console.log(qtdSelectedElements);
+
+        // move selected to list
+        if (qtdSelectedElements < 3) {
+            // get element
+            var thisOption = $(this).parent().prop('outerHTML');
+
+            // move to list
+            $(this).closest('.c-multiSelect').find('.c-multiSelect__selecteds').append('<li class="liCheckbox">' + thisOption + '</li>')
+
+            // delete option in submenu
+            $(this).parent().remove();
+
+            // remove ID all labels
+            $('.c-multiSelect__selecteds label').each(function() {
+                $(this).removeAttr('for');
+            });
+        } else {
+            swal("Você pode selecionar apenas 3 categorias");
+        }
+
+        // close submenu
+        $('.c-subMenu').removeClass('is-active');
+    });
+
+    // remove selecteds
+    $(document).on('click', '.c-multiSelect__selecteds input', function() {
+        // set attr 'for' in label before hide option
+        var thisID = $(this).attr('id');
+        $(this).parent().children('label').attr('for', thisID);
+
+        // append this option in list
+        var thisSelected = $(this).parent().prop('outerHTML');
+        $(this).closest('.c-multiSelect').find('.c-subMenu__content').children('.liCheckbox').append(thisSelected);
+
+        // remove option
+        $(this).closest('.liCheckbox').remove();
+    });
 }

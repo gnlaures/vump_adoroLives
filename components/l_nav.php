@@ -68,15 +68,15 @@
 				<li><a href="#"><strong class="u-color--primary">SAIR</strong></a></li>
 			</ul>
 			<ul class="l-nav__menu --userOff">
-				<li><a href="#"><strong class="u-color--primary">Divulgue</strong>aqui sua live</a></li>
+				<li><a href="cadastro-live"><strong class="u-color--primary">Divulgue</strong>aqui sua live</a></li>
 				<li><a href="#"><strong class="u-color--primary">anuncie</strong>no adorolives</a></li>
 				<li><a href="#" class="iconLink --heart"><?php include('media/img/icons/icon_heart.svg'); ?></a></li>
-				<li><a href="#" class="iconLink --acc"><?php include('media/img/icons/icon_user.svg'); ?></a></li>
+				<li><a href="#" class="iconLink --acc js-openModal__userRegister"><?php include('media/img/icons/icon_user.svg'); ?></a></li>
 			</ul>
 			<ul class="l-nav__menuMobile">
 				<li><a href="#"><strong>lives</strong> do dia</a></li>
 				<li><a href="#"><strong>lives</strong> da semana</a></li>
-				<li><a href="#"><strong>anuncie</strong> no Adorolives</a></li>
+				<li><a href="#" class="js-openModal__userRegister"><strong>anuncie</strong> no Adorolives</a></li>
 				<li><a href="#"><strong>Minha</strong> Agenda</a></li>
 			</ul>
 		</div>

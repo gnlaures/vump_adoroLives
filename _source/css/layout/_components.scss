@@ -65,26 +65,12 @@
         flex-direction: row;
         flex-wrap: wrap;
         width: 100%;
-        @include calcWidthForPositionNegative(-15px);
+        @include calcWidthForPositionNegative(-5px);
     }
     li {
         position: relative;
         display: block;
-        padding: 15px;
-    }
-    li.liBtn {
-        display: flex;
-        align-items: flex-end;
-        justify-content: flex-end;
-        .field--hiddenValidate, input {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            display: inline;
-            width: 0;
-            height: 0;
-            @include opacity(0);
-        }
+        padding: 5px;
     }
     li.liFile {
         .inputText {
@@ -122,7 +108,8 @@
             z-index: 1;
         }
     }
-    li.liSelect {
+    li.liSelect,
+    div.liSelect {
         > div {
             display: block;
             width: 100%;
@@ -137,7 +124,8 @@
                 position: absolute;
                 bottom: 50%;
                 right: 20px;
-                background: url(#{$media_assets}caret-down.svg);
+                z-index: 2;
+                background: url(#{$media_assets}caret.svg);
                 background-repeat: no-repeat;
                 background-position: center center;
                 background-size: contain;
@@ -151,7 +139,8 @@
             }
         }
     }
-    li.liCheckbox {
+    li.liCheckbox,
+    div.liCheckbox {
         div {
             display: flex;
             flex-direction: row;
@@ -165,18 +154,18 @@
                 cursor: pointer;
             }
             label {
-                @include paragrafos();
+                @include paragrafos($tc: $secondaryLight);
                 text-transform: none;
                 order: 2;
-                padding-left: 10px;
+                padding-left: 5px;
                 margin-bottom: 0;
             }
             input {
                 @include roundedAll(4px);
-                @include flexWidth(24px);
+                @include flexWidth(18px);
                 display: block;
                 padding: 0;
-                height: 24px;
+                height: 18px;
                 &:checked {
                     background: url(#{$media_icons}/icon_checked.svg);
                     background-repeat: no-repeat;
@@ -221,28 +210,19 @@
             }
         }
     }
-    label, input, select, textarea, .listOfSelectedJobs {
+    label, input, select, textarea {
         @include transition();
         display: block;
         width: 100%;
     }
-    input, select, textarea, .listOfSelectedJobs {
-        background: $white;
-        border: 1px solid $lightGray;
-    }
-    .listOfSelectedJobs {
-        span {
-            @include paragrafos($tc: $placeholderText);
-        }
-        span[data-codejob] {
-            @include paragrafos();
-        }
-    }
-    input, select, textarea {
-        @include paragrafos;
+    input, select, textarea, .fakeInput {
+        @include roundedAll(18px);
+        @include paragrafos($tc: $secondaryLight);
         @include placeholder {
             @include paragrafos($tc: $placeholderText);
         }
+        background: $white;
+        border: 1px solid $mediumGray;
         &.error{
             border: 1px solid $feedbackError;
         }
@@ -250,10 +230,17 @@
             border-color: $primary;
         }
     }
-    input, select {
-        height: 44px;
-        line-height: 44px;
+    input, select, .fakeInput {
+        height: 36px;
+        line-height: 36px;
         padding: 0 20px;
+    }
+    .fakeInput {
+        text-align: left !important;
+        margin-bottom: 0 !important;
+        &:after {
+            display: none !important;
+        }
     }
     select {
         &:invalid {
@@ -641,7 +628,7 @@ $c_btnIcon_maxWidth: 220px;
             left: 0;
             right: 0;
             margin: 0 auto;
-            background: url(#{$media_assets}caret-down.svg);
+            background: url(#{$media_assets}caret.svg);
             background-repeat: no-repeat;
             background-position: center;
             background-size: contain;
@@ -649,21 +636,20 @@ $c_btnIcon_maxWidth: 220px;
     }
     > .c-subMenu__content {
         @include transition();
-        @include scroll();
-        @include calc(max-height, 100vh, '-', 300px);
+        @include scroll($bar: $mediumGray);
         @include u-hideElement;
-        @include transforms(translateX(-50%), center);
-        @include roundedAll();
-        border: 1px solid $lightGray;
+        @include roundedAll(5px);
+        border: 1px solid $mediumGray;
         overflow-y: auto;
         overflow-x: hidden;
         display: block;
-        width: 250px;
+        width: 190px;
+        max-height: 180px;
         position: absolute;
-        top: 80px;
-        left: 50%;
+        top: 50px;
+        left: 0;
         background: $white;
-        padding: 10px;
+        padding: 15px;
         z-index: 2;
         ul li {
             a {
@@ -948,7 +934,11 @@ $c_subMenuHover_defaultHeight: 28px;
         padding: 3px;
     }
     a {
+        @include transition();
         display: block;
+        &:hover {
+            @include opacity(0.8);
+        }
     }
     svg {
         display: block;
@@ -1048,6 +1038,28 @@ $c_subMenuHover_defaultHeight: 28px;
                     }
                 }
             }
+        }
+    }
+}
+.c-multiSelect {
+    &__selecteds {
+        padding: 10px 20px 0 20px;
+        li {
+            display: block;
+            width: 100%;
+            padding: 0;
+            margin-bottom: 5px;
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+        }
+        input {
+            background-color: $primary;
+            background-image: url(#{$media_icons}icon_delete.svg);
+            background-repeat: no-repeat;
+            background-size: 45%;
+            background-position: center;
+            border: 0;
         }
     }
 }
@@ -1450,8 +1462,11 @@ $c_subMenuHover_defaultHeight: 28px;
             top: 14px;
             left: 36px;
             z-index: 2;
-            path {
+            .strokeColor {
                 fill: $white;
+            }
+            .bgColor {
+                fill: $primary;
             }
         }
     }
@@ -1560,6 +1575,51 @@ $c_subMenuHover_defaultHeight: 28px;
     &__btns {
     
     }
+    &__favoritesNumber {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        margin: 10px 0;
+        i {
+            @include flexWidth(22px);
+            svg, img {
+                display: block;
+                width: 100%;
+                height: 22px;
+                object-fit: contain;
+                .bgColor {
+                    fill: transparent;
+                }
+            }
+        }
+        span {
+            font-weight: $fwMedium;
+            color: $primary;
+            padding-left: 5px;
+            display: block;
+            font-size: 13px;
+        }
+    }
+    &__manageLive {
+        a {
+            display: block;
+            width: 100%;
+            text-align: center;
+            max-width: 180px;
+        }
+        .deleteLive {
+            margin-top: 10px;
+            color: $text;
+            font-weight: $fwMedium;
+            font-size: 13px;
+            &:hover {
+                color: $primary;
+                text-decoration: underline;
+            }
+        }
+    }
     
     &.--online {
         .c-cardLive__cover {
@@ -1570,8 +1630,11 @@ $c_subMenuHover_defaultHeight: 28px;
     }
     &.--favorited {
         .c-cardLive__favorite {
-            &:before {
-                border-color: transparent $black transparent transparent;
+            svg {
+                .bgColor,
+                .strokeColor {
+                    fill: $white;
+                }
             }
         }
     }
@@ -1605,5 +1668,50 @@ $c_subMenuHover_defaultHeight: 28px;
             color: $white;
             padding: 0 20px;
         }
+    }
+}
+.c-copyLinkLive {
+    display: block;
+    width: 100%;
+    position: relative;
+    margin-top: 15px;
+    &__feedback {
+        @include paragrafos($mb: 0);
+        text-align: center;
+        display: block;
+        width: 100%;
+        margin-top: 10px;
+    }
+    span {
+        @include roundedAll(18px);
+        @include transition();
+        display: block;
+        width: 70px;
+        height: 36px;
+        line-height: 36px;
+        background: $mutedGray;
+        color: $secondaryLight;
+        font-size: 13px;
+        font-weight: $fwMedium;
+        text-align: center;
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 1;
+        &:hover {
+            background: $mediumGray;
+        }
+    }
+    input {
+        @include roundedAll(18px);
+        display: block;
+        width: 100%;
+        height: 36px;
+        padding: 0 80px 0 20px;
+        background: $mutedGray;
+        color: $secondaryLight;
+        font-size: 13px;
+        font-weight: $fwLight;
     }
 }

@@ -19,10 +19,10 @@
 			$file = 'page_components.php';
 			$title_page = 'Components - '.$title;
 			break;
-		
-		case 'contato':
-			$file = 'page_contato.php';
-			$title_page = 'Contato - '.$title;
+
+		case 'lives-ativas':
+			$file = 'page_livesAtivas.php';
+			$title_page = 'Lives Ativas - '.$title;
 			break;
 
 		case 'cadastro-live':
